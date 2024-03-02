@@ -1,72 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok LIVE: Lecteur de Chat</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lottery - HTML Template</title>
 
-    <meta name="description" content="A chat reader for TikTok LIVE utilizing TikTok-Live-Connector and Socket.IO to forward the data to the client. This demo project uses the unofficial TikTok API to retrieve chat comments, gifts and other events from TikTok LIVE.">
-    <meta name="keywords" content="TikTok,Live,Livestream,Chat,Reader,Scraper,Tracker,tiktok.com,broadcast,api,library,node,node.js,javascript">
+    <link
+      rel="shortcut icon"
+      href="https://pixner.net/lotterypro2/main/assets/images/fav.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/fontawesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/plugin/nice-select.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/plugin/magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/plugin/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/arafat-font.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/plugin/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pixner.net/lotterypro2/main/assets/css/style.css"
+    />
+    <style>
+      .ticket-checker .overlay {
+        background-image: url(loto.png);
+        background-repeat: no-repeat;
+        background-position: left 80px;
+        background-size: contain;
+      }
+    </style>
+  </head>
 
-    <link rel="stylesheet" href="style.css">
+  <body>
+    <!-- Scroll To Top Start-->
+    <a href="javascript:void(0)" class="scrollToTop"
+      ><i class="fas fa-angle-double-up"></i
+    ></a>
+    <!-- Scroll To Top End -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="connection.js"></script>
-    <script src="app.js"></script>
-
-    <script>
-        function generateOverlay() {
-            let username = $('#uniqueIdInput').val();
-            let url = `/obs.html?username=${username}&showLikes=1&showChats=1&showGifts=1&showFollows=1&showJoins=1&bgColor=rgb(24,23,28)&fontColor=rgb(227,229,235)&fontSize=1.3em`;
-        
-            if(username) {
-                window.open(url, '_blank');
-            } else {
-                alert("Enter username");
-            }
-        }
-    </script>
-</head>
-<body>
-    <div class="head">
-        <h1>TikTok LIVE : Lecteur de Chat</h1>
-    </div>
-
-
-    <div class="inputFields">
-        <p>Enter the <b>@username</b> of a user who is currently live:</p>
-        <input type="text" id="uniqueIdInput">
-        <input type="button" id="connectButton" value="connect">
-        <a href="#" onclick="generateOverlay()">Generate Overlay URL</a>
-    </div>
-
-    <table class="splitstatetable">
-        <tr>
-            <td>
-                <pre id="stateText"></pre>
-            </td>
-            <td>
-                <div id="roomStats"></div>
-            </td>
-        </tr>
-    </table>
-
-    <table class="splitchattable">
-        <tr>
-            <td>
-                <div class="chatcontainer">
-                    <h3 class="containerheader">Chats</h3>
+    <!-- Recent Lottery Results start -->
+    <section class="ticket-checker recent-lottery-results results section-bg">
+      <div class="overlay pt-120 pb-120">
+        <div class="shape-area">
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
+            class="shape-1"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
+            class="shape-2"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
+            class="shape-3"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
+            class="shape-4"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/coin.png"
+            class="shape-5"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/coin.png"
+            class="shape-6"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/coin.png"
+            class="shape-7"
+            alt="Image"
+          />
+        </div>
+        <div class="container wow fadeInUp">
+          <div class="row justify-content-end">
+            <div class="col-lg-6">
+              <div class="single-box">
+                <div class="img-area">
+                  <img
+                    src="https://pixner.net/lotterypro2/main/assets/images/lottery-img-1.png"
+                    alt="image"
+                  />
                 </div>
-            </td>
-            <td>
-                <div class="giftcontainer">
-                    <h3 class="containerheader">Gifts</h3>
+                <div class="text-area">
+                  <p class="lgtxt">
+                    <span class="lgtxt">Richard william</span> has won 2 minutes
+                    ago.
+                  </p>
+                  <span class="price">Amount : <span>$32.010</span></span>
+                  <p>Draw took place on : <span>20/05/2022</span></p>
+                  <div class="lucky-number">
+                    <div class="tab-content m-0">
+                      <ul class="justify-content-start">
+                        <li><span>8</span></li>
+                        <li><span>9</span></li>
+                        <li><span>10</span></li>
+                        <li class="numActive"><span>11</span></li>
+                        <li><span>12</span></li>
+                        <li><span>13</span></li>
+                        <li><span>92</span></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-            </td>
-        </tr>
-    </table>
-</body>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Recent Lottery Results end -->
+
+    <!--==================================================================-->
+    <script src="https://pixner.net/lotterypro2/main/assets/js/jquery.min.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/jquery-ui.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/bootstrap.min.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/fontawesome.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/slick.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/jquery.nice-select.min.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/counter.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/waypoint.min.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/jquery.magnific-popup.min.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/wow.min.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/plugin.js"></script>
+    <script src="https://pixner.net/lotterypro2/main/assets/js/main.js"></script>
+  </body>
 </html>
