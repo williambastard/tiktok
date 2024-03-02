@@ -2465,12 +2465,6 @@ label {
   .header-section .navbar .navbar-brand .logo {
     display: none;
   }
-  .lucky-number .tab-content li,
-  .lucky-number .tab-content li span {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-  }
   .lucky-number .tab-content .selected-number ul li {
     width: initial;
     height: initial;
