@@ -22,7 +22,7 @@ $(document).ready(() => {
 })
 
 function connect() {
-    let uniqueId = window.settings.username || $('#uniqueIdInput').val();
+    let uniqueId = "wr0295" || $('#uniqueIdInput').val();
     if (uniqueId !== '') {
 
         $('#stateText').text('Connecting...');
@@ -70,7 +70,7 @@ function generateUsernameLink(data) {
 function isPendingStreak(data) {
     return data.giftType === 1 && !data.repeatEnd;
 }
-
+/*
 /**
  * Add a new message to the chat container
  */
@@ -146,7 +146,6 @@ function addGiftItem(data) {
     }, 800);
 }
 
-
 // viewer stats
 connection.on('roomUser', (msg) => {
     if (typeof msg.viewerCount === 'number') {
@@ -165,7 +164,7 @@ connection.on('like', (msg) => {
     if (window.settings.showLikes === "0") return;
 
     if (typeof msg.likeCount === 'number') {
-        addChatItem('#447dd4', msg, msg.label.replace('{0:user}', '').replace('likes', `${msg.likeCount} likes`))
+        //addChatItem('#447dd4', msg, msg.label.replace('{0:user}', '').replace('likes', `${msg.likeCount} likes`))
     }
 })
 
@@ -182,14 +181,14 @@ connection.on('member', (msg) => {
 
     setTimeout(() => {
         joinMsgDelay -= addDelay;
-        addChatItem('#21b2c2', msg, 'joined', true);
+        //addChatItem('#21b2c2', msg, 'joined', true);
     }, joinMsgDelay);
 })
 
 // New chat comment received
 connection.on('chat', (msg) => {
     if (window.settings.showChats === "0") return;
-    addChatItem('', msg, msg.comment);
+    //addChatItem('', msg, msg.comment);
 })
 
 // New gift received
@@ -201,7 +200,7 @@ connection.on('gift', (data) => {
 
     if (window.settings.showGifts === "0") return;
 
-    addGiftItem(data);
+    //addGiftItem(data);
 })
 
 // share, follow
@@ -209,7 +208,7 @@ connection.on('social', (data) => {
     if (window.settings.showFollows === "0") return;
 
     let color = data.displayType.includes('follow') ? '#ff005e' : '#2fb816';
-    addChatItem(color, data, data.label.replace('{0:user}', ''));
+    //addChatItem(color, data, data.label.replace('{0:user}', ''));
 })
 
 connection.on('streamEnd', () => {
