@@ -17,12 +17,58 @@
     <link rel="stylesheet" href="arafat-font.css" />
     <link rel="stylesheet" href="animate.css" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+    />
     <style>
       .ticket-checker .overlay {
         background-image: url(loto.png);
         background-repeat: no-repeat;
         background-position: left 80px;
         background-size: contain;
+      }
+      .container {
+        margin-top: 200px;
+      }
+
+      .counter-box {
+        display: block;
+        background: #f6f6f6;
+        padding: 40px 20px 37px;
+        text-align: center;
+      }
+
+      .counter-box p {
+        margin: 5px 0 0;
+        padding: 0;
+        color: #909090;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .counter-box i {
+        font-size: 60px;
+        margin: 0 0 15px;
+        color: #d2d2d2;
+      }
+
+      .counter {
+        display: block;
+        font-size: 32px;
+        font-weight: 700;
+        color: #666;
+        line-height: 28px;
+      }
+
+      .counter-box.colored {
+        background: #181b1e;
+      }
+
+      .counter-box.colored p,
+      .counter-box.colored i,
+      .counter-box.colored .counter {
+        color: #fff;
       }
     </style>
     <script
@@ -45,9 +91,42 @@
       ><i class="fas fa-angle-double-up"></i
     ></a>
     <!-- Scroll To Top End -->
-
+    <div class="container">
+      <div class="row">
+        <div class="four col-md-3">
+          <div class="counter-box colored">
+            <i class="fa fa-thumbs-o-up"></i>
+            <span class="counter">2147</span>
+            <p>Likes</p>
+          </div>
+        </div>
+        <div class="four col-md-3">
+          <div class="counter-box">
+            <i class="fa fa-eye"></i>
+            <span class="counter">3275</span>
+            <p>Vues</p>
+          </div>
+        </div>
+        <div class="four col-md-3">
+          <div class="counter-box">
+            <i class="fa fa-plus"></i>
+            <span class="counter">289</span>
+            <p>Abonnements</p>
+          </div>
+        </div>
+        <div class="four col-md-3">
+          <div class="counter-box">
+            <i class="fa fa-gift"></i>
+            <span class="counter">1563</span>
+            <p>Cadeaux</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Recent Lottery Results start -->
-    <section class="ticket-checker recent-lottery-results results section-bg mt-60 pt-120">
+    <section
+      class="ticket-checker recent-lottery-results results section-bg mt-60 pt-120"
+    >
       <div class="overlay pt-120 pb-120">
         <div class="shape-area">
           <img
@@ -98,19 +177,27 @@
                 </div>
                 <div class="text-area">
                   <p class="lgtxt">
-                    <span class="lgtxt">Pseudo</span> vient de gagner cette manche
+                    <span class="lgtxt">Pseudo</span> vient de gagner cette
+                    manche
                   </p>
-                  <span class="price">Followers gagnés: <span>XXXXX</span></span>
+                  <span class="price"
+                    >Followers gagnés: <span>XXXXX</span></span
+                  >
                   <div class="lucky-number">
-                    <div class="tab-content m-0">
-                      <ul class="justify-content-start">
-                        <li><span>8</span></li>
-                        <li><span>9</span></li>
-                        <li><span>10</span></li>
-                        <li class="numActive"><span>11</span></li>
-                        <li><span>12</span></li>
-                        <li><span>13</span></li>
-                        <li><span>92</span></li>
+                    <div class="tab-content mt-30">
+                      <p class="lgtxt">
+                        <span class="lgtxt">Prochain tirage</span>
+                      </p>
+                      <ul class="justify-content-start timer">
+                        <li class="value">
+                          <span class="hour">9</span> Heure(s)
+                        </li>
+                        <li class="value">
+                          <span class="minute">10</span> Minutes(s)
+                        </li>
+                        <li class="value">
+                          <span class="second">12</span> Seconde(s)
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -136,6 +223,72 @@
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/wow.min.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/plugin.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/main.js"></script>
-    <script>connect()</script>
+    <script>
+      /*connect()*/
+    </script>
+    <script>
+      function setupCountdown(
+        campaignSelector,
+        startTimeMillis,
+        endTimeMillis
+      ) {
+        var second = 1000;
+        var minute = second * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+
+        function calculateRemaining() {
+          var now = new Date().getTime();
+          return now >= startTimeMillis && now < endTimeMillis
+            ? endTimeMillis - now
+            : 0;
+        }
+
+        var didRefresh = false;
+        var previousGap = calculateRemaining();
+
+        function countdown() {
+          var gap = calculateRemaining();
+          var shouldRefresh =
+            (previousGap > day && gap <= day) || (previousGap > 0 && gap === 0);
+
+          previousGap = gap;
+
+          var textHour = Math.floor((gap % day) / hour);
+          var textMinute = Math.floor((gap % hour) / minute);
+          var textSecond = Math.floor((gap % minute) / second);
+
+          if (document.querySelector(campaignSelector + " .timer")) {
+            document.querySelector(campaignSelector + " .hour").innerText =
+              textHour;
+            document.querySelector(campaignSelector + " .minute").innerText =
+              textMinute;
+            document.querySelector(campaignSelector + " .second").innerText =
+              textSecond;
+          }
+
+          if (shouldRefresh && !didRefresh) {
+            didRefresh = true;
+            setTimeout(function () {
+              window.location.reload();
+            }, 30000 + Math.random() * 90000);
+          }
+        }
+
+        countdown();
+        setInterval(countdown, 1000);
+      }
+
+      document.addEventListener("DOMContentLoaded", function (event) {
+        if (!document.querySelectorAll || !document.body.classList) {
+          return;
+        }
+      });
+
+      setupCountdown(".lucky-number", 1705780800000, 1802649540000);
+
+      // 1705780800000 = Saturday 20 January 2024 20:00:00 (GMT)
+      // 1802649540000 = Sunday 14 February 2027 23:59:00 (GMT)
+    </script>
   </body>
 </html>
