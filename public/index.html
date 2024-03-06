@@ -175,7 +175,7 @@
                 <div class="text-area">
                   <p class="lgtxt">
                     <b><span class="lgtxt pseudo">XXXXX</span></b
-                    >&nbsp;vient de gagner cette manche
+                    >&nbsp;vient de gagner cette partie
                   </p>
                   <span class="price"
                     >Il a vient de gagner
@@ -187,9 +187,12 @@
                         <span class="lgtxt">Prochain tirage</span>
                       </p>
                       <ul class="justify-content-start timer">
-                        <li class="value"><span class="hour">9</span>H&nbsp;</li>
-                        <li class="value"><span class="minute">10</span>M&nbsp;</li>
-                        <li class="value"><span class="second">12</span>S&nbsp;</li>
+                        <li class="value">
+                          <span class="minute">10</span>Minute(s)&nbsp;
+                        </li>
+                        <li class="value">
+                          <span class="second">12</span>Seconde(s)&nbsp;
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -216,7 +219,6 @@
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/plugin.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/main.js"></script>
     <script>
-      /*connect()*/
       let targetObj = {
         pseudo: "XXXXX",
         profile_image:
@@ -264,14 +266,11 @@
           var textSecond = Math.floor((gap % minute) / second);
 
           if (document.querySelector(campaignSelector + " .timer")) {
-            document.querySelector(campaignSelector + " .hour").innerText =
-              textHour;
             document.querySelector(campaignSelector + " .minute").innerText =
               textMinute;
             document.querySelector(campaignSelector + " .second").innerText =
               textSecond;
           }
-
           if (shouldRefresh && !didRefresh) {
             didRefresh = true;
             setTimeout(function () {
@@ -279,7 +278,6 @@
             }, 30000 + Math.random() * 90000);
           }
         }
-
         countdown();
         setInterval(countdown, 1000);
       }
@@ -290,6 +288,7 @@
         }
       });
 
+      connect();
       setupCountdown(".lucky-number", 1705780800000, 1802649540000);
 
       // 1705780800000 = Saturday 20 January 2024 20:00:00 (GMT)
