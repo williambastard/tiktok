@@ -31,13 +31,15 @@ class TikTokConnectionWrapper extends EventEmitter {
       // ActionId 1 = L'utilisateur à rejoins le live
       // ActionId 3 = Muter un utilisateur en étant le créateur du live
       // ActionId 4 = Démuter un utilisateur en étant le créateur du live
-      
+
       // ActionId 9 = Muter un utilisateur en étant modérateur
       // ActionId 10 = Démuter un utilisateur en étant modérateur
 
       // ActionId 11 = Blocage un utilisateur
       // ActionId 21 = Déblocage un utilisateur
-      this.log(CircularJSON.stringify(data));
+
+      this.log(CircularJSON.stringify(data.profilePictureUrl));
+
     });
     this.connection.on("roomuser", (data) => {
       this.log(CircularJSON.stringify(data));
@@ -51,12 +53,12 @@ class TikTokConnectionWrapper extends EventEmitter {
     this.connection.on("chat", (data) => {
       if (data.comment.toLowerCase() === "!dice") {
         let diceResult = Math.ceil(Math.random() * 6);
-        this.connection
-          .sendMessage(
-            `@${data.uniqueId} you rolled a ${diceResult}`)
+        this.connection.sendMessage(
+          `@${data.uniqueId} you rolled a ${diceResult}`
+        );
       }
     });
-    
+
     this.connection.on("like", (data) => {
       this.log(
         `${data.uniqueId} sent ${data.likeCount} likes, total likes: ${data.totalLikeCount}`
@@ -92,6 +94,7 @@ class TikTokConnectionWrapper extends EventEmitter {
         this.reconnectWaitMs = 1000;
 
         // Client disconnected while establishing connection => drop connection
+
         if (this.clientDisconnected) {
           this.connection.disconnect();
           return;

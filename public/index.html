@@ -81,6 +81,14 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script>
+      let targetObj = {
+        nickname: "XXXXX",
+        profilePictureUrl:
+          "https://pixner.net/lotterypro2/main/assets/images/lottery-img-1.png",
+        win: 50,
+      };
+    </script>
     <script src="connection.js"></script>
     <script src="app.js"></script>
   </head>
@@ -136,11 +144,6 @@
           />
           <img
             src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
-            class="shape-2"
-            alt="Image"
-          />
-          <img
-            src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
             class="shape-3"
             alt="Image"
           />
@@ -170,28 +173,34 @@
             <div class="col-lg-6">
               <div class="single-box">
                 <div class="img-area">
-                  <img class="avatar" src="mystere.jpeg" alt="image" />
+                  <img
+                    class="avatar profilePictureUrl"
+                    src="mystere.jpeg"
+                    alt="image"
+                  />
                 </div>
                 <div class="text-area">
                   <p class="lgtxt">
-                    <b><span class="lgtxt pseudo">XXXXX</span></b
-                    >&nbsp;vient de gagner cette partie
+                    <b><span class="lgtxt nickname">XXXXX</span></b
+                    >&nbsp;<span class="textwinable text-secondary"
+                      >participe au jeu</span
+                    >
                   </p>
                   <span class="price"
-                    >Il a vient de gagner
+                    >Il/Elle va tenter de remporter
                     <b><span class="win">0</span></b> follower(s)</span
                   >
                   <div class="lucky-number">
                     <div class="tab-content mt-30">
                       <p class="lgtxt">
-                        <span class="lgtxt">Prochain tirage</span>
+                        <span class="lgtxt">Temps restant avant sélection</span>
                       </p>
                       <ul class="justify-content-start timer">
                         <li class="value">
-                          <span class="minute">10</span>Minute(s)&nbsp;
+                          <span class="minute">0</span>Minute(s)&nbsp;
                         </li>
                         <li class="value">
-                          <span class="second">12</span>Seconde(s)&nbsp;
+                          <span class="second">0</span>Seconde(s)&nbsp;
                         </li>
                       </ul>
                     </div>
@@ -218,21 +227,7 @@
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/wow.min.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/plugin.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/main.js"></script>
-    <script>
-      let targetObj = {
-        pseudo: "XXXXX",
-        profile_image:
-          "https://pixner.net/lotterypro2/main/assets/images/lottery-img-1.png",
-        win: "YYYYY",
-      };
-      let targetProxy = new Proxy(targetObj, {
-        set: function (target, key, value) {
-          document.querySelector("." + key).textContent = value;
-          target[key] = value;
-          return true;
-        },
-      });
-    </script>
+
     <script>
       function setupCountdown(
         campaignSelector,
@@ -287,15 +282,127 @@
           return;
         }
       });
-
-      connect();
+      connect("hainda59100");
       setupCountdown(".lucky-number", 1705780800000, 1802649540000);
 
+      let targetProxy = new Proxy(targetObj, {
+        set: function (target, key, value) {
+          if (document.querySelector("." + key)) {
+            if (key == "profilePictureUrl")
+              document.querySelector("." + key).src = value;
+            else document.querySelector("." + key).textContent = value;
+            document.querySelector(".win").textContent = targetObj.win;
+            console.log(key);
+          }
+          target[key] = value;
+          return true;
+        },
+      });
       // 1705780800000 = Saturday 20 January 2024 20:00:00 (GMT)
       // 1802649540000 = Sunday 14 February 2027 23:59:00 (GMT)
     </script>
     <script type="text/javascript">
-      function iecompattest(){return document.compatMode&&"BackCompat"!=document.compatMode?document.documentElement:document.body}function snowIE_NS6(){for(doc_width=ns6up?window.innerWidth-10:iecompattest().clientWidth-10,doc_height=window.innerHeight&&"windowheight"==snowdistance?window.innerHeight:ie4up&&"windowheight"==snowdistance?iecompattest().clientHeight:ie4up&&!window.opera&&"pageheight"==snowdistance?iecompattest().scrollHeight:iecompattest().offsetHeight,i=0;no>i;++i)yp[i]+=sty[i],yp[i]>doc_height-50&&(xp[i]=Math.random()*(doc_width-am[i]-30),yp[i]=0,stx[i]=.02+Math.random()/10,sty[i]=.7+Math.random()),dx[i]+=stx[i],document.getElementById("dot"+i).style.top=yp[i]+"px",document.getElementById("dot"+i).style.left=xp[i]+am[i]*Math.sin(dx[i])+"px";snowtimer=setTimeout("snowIE_NS6()",10)}function hidesnow(){if(window.snowtimer)for(clearTimeout(snowtimer),i=0;no>i;i++)document.getElementById("dot"+i).style.visibility="hidden"}var sy='POSITION:absolute;Z-INDEX:999;VISIBILITY:visible;TOP:15px;';var snowsrc="https://pixner.net/lotterypro2/main/assets/images/coin.png",no=10,hidesnowtime=0,snowdistance="pageheight",ie4up=document.all?1:0,ns6up=document.getElementById&&!document.all?1:0,dx,xp,yp,am,stx,sty,i,doc_width=800,doc_height=600;for(ns6up?(doc_width=self.innerWidth,doc_height=self.innerHeight):ie4up&&(doc_width=iecompattest().clientWidth,doc_height=iecompattest().clientHeight),dx=[],xp=[],yp=[],am=[],stx=[],sty=[],snowsrc=-1!=snowsrc.indexOf("click123.ca")?"https://click123.ca/dist/img/snow.gif":snowsrc,i=0;no>i;++i)dx[i]=0,xp[i]=Math.random()*(doc_width-50),yp[i]=Math.random()*doc_height,am[i]=20*Math.random(),stx[i]=.02+Math.random()/10,sty[i]=.7+Math.random(),(ie4up||ns6up)&&document.write(0==i?'<div id="dot'+i+'" style="'+sy+';width:1px;height:1px;overflow:hidden"><a href="http://click123.ca"><img src=\''+snowsrc+'\' border="0"></a></div>':'<div id="dot'+i+'" style="'+sy+'"><img src=\''+snowsrc+'\' border="0"></div>');(ie4up||ns6up)&&(snowIE_NS6(),hidesnowtime>0&&setTimeout("hidesnow()",1e3*hidesnowtime));
+      function iecompattest() {
+        return document.compatMode && "BackCompat" != document.compatMode
+          ? document.documentElement
+          : document.body;
+      }
+      function snowIE_NS6() {
+        for (
+          doc_width = ns6up
+            ? window.innerWidth - 10
+            : iecompattest().clientWidth - 10,
+            doc_height =
+              window.innerHeight && "windowheight" == snowdistance
+                ? window.innerHeight
+                : ie4up && "windowheight" == snowdistance
+                ? iecompattest().clientHeight
+                : ie4up && !window.opera && "pageheight" == snowdistance
+                ? iecompattest().scrollHeight
+                : iecompattest().offsetHeight,
+            i = 0;
+          no > i;
+          ++i
+        )
+          (yp[i] += sty[i]),
+            yp[i] > doc_height - 50 &&
+              ((xp[i] = Math.random() * (doc_width - am[i] - 30)),
+              (yp[i] = 0),
+              (stx[i] = 0.02 + Math.random() / 10),
+              (sty[i] = 0.7 + Math.random())),
+            (dx[i] += stx[i]),
+            (document.getElementById("dot" + i).style.top = yp[i] + "px"),
+            (document.getElementById("dot" + i).style.left =
+              xp[i] + am[i] * Math.sin(dx[i]) + "px");
+        snowtimer = setTimeout("snowIE_NS6()", 10);
+      }
+      function hidesnow() {
+        if (window.snowtimer)
+          for (clearTimeout(snowtimer), i = 0; no > i; i++)
+            document.getElementById("dot" + i).style.visibility = "hidden";
+      }
+      var sy = "POSITION:absolute;Z-INDEX:999;VISIBILITY:visible;TOP:15px;";
+      var snowsrc =
+          "https://pixner.net/lotterypro2/main/assets/images/coin.png",
+        no = 10,
+        hidesnowtime = 0,
+        snowdistance = "pageheight",
+        ie4up = document.all ? 1 : 0,
+        ns6up = document.getElementById && !document.all ? 1 : 0,
+        dx,
+        xp,
+        yp,
+        am,
+        stx,
+        sty,
+        i,
+        doc_width = 800,
+        doc_height = 600;
+      for (
+        ns6up
+          ? ((doc_width = self.innerWidth), (doc_height = self.innerHeight))
+          : ie4up &&
+            ((doc_width = iecompattest().clientWidth),
+            (doc_height = iecompattest().clientHeight)),
+          dx = [],
+          xp = [],
+          yp = [],
+          am = [],
+          stx = [],
+          sty = [],
+          snowsrc =
+            -1 != snowsrc.indexOf("click123.ca")
+              ? "https://click123.ca/dist/img/snow.gif"
+              : snowsrc,
+          i = 0;
+        no > i;
+        ++i
+      )
+        (dx[i] = 0),
+          (xp[i] = Math.random() * (doc_width - 50)),
+          (yp[i] = Math.random() * doc_height),
+          (am[i] = 20 * Math.random()),
+          (stx[i] = 0.02 + Math.random() / 10),
+          (sty[i] = 0.7 + Math.random()),
+          (ie4up || ns6up) &&
+            document.write(
+              0 == i
+                ? '<div id="dot' +
+                    i +
+                    '" style="' +
+                    sy +
+                    ';width:1px;height:1px;overflow:hidden"></div>'
+                : '<div id="dot' +
+                    i +
+                    '" style="' +
+                    sy +
+                    "\"><img src='" +
+                    snowsrc +
+                    '\' border="0" style="animation:spin 15s infinite linear;"></div>'
+            );
+      (ie4up || ns6up) &&
+        (snowIE_NS6(),
+        hidesnowtime > 0 && setTimeout("hidesnow()", 1e3 * hidesnowtime));
     </script>
   </body>
 </html>
