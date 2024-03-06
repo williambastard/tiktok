@@ -165,23 +165,21 @@
             alt="Image"
           />
         </div>
-        <div class="container wow fadeInUp">
+        <div class="container wow">
           <div class="row justify-content-end">
             <div class="col-lg-6">
               <div class="single-box">
                 <div class="img-area">
-                  <img
-                    src="https://pixner.net/lotterypro2/main/assets/images/lottery-img-1.png"
-                    alt="image"
-                  />
+                  <img class="avatar" src="mystere.jpeg" alt="image" />
                 </div>
                 <div class="text-area">
                   <p class="lgtxt">
-                    <span class="lgtxt">Pseudo</span> vient de gagner cette
-                    manche
+                    <b><span class="lgtxt pseudo">XXXXX</span></b
+                    >&nbsp;vient de gagner cette manche
                   </p>
                   <span class="price"
-                    >Followers gagnés: <span>XXXXX</span></span
+                    >Il a vient de gagner
+                    <b><span class="win">0</span></b> follower(s)</span
                   >
                   <div class="lucky-number">
                     <div class="tab-content mt-30">
@@ -189,9 +187,9 @@
                         <span class="lgtxt">Prochain tirage</span>
                       </p>
                       <ul class="justify-content-start timer">
-                        <li class="value"><span class="hour">9</span>H</li>
-                        <li class="value"><span class="minute">10</span>M</li>
-                        <li class="value"><span class="second">12</span>S</li>
+                        <li class="value"><span class="hour">9</span>H&nbsp;</li>
+                        <li class="value"><span class="minute">10</span>M&nbsp;</li>
+                        <li class="value"><span class="second">12</span>S&nbsp;</li>
                       </ul>
                     </div>
                   </div>
@@ -219,6 +217,19 @@
     <script src="https://pixner.net/lotterypro2/main/assets/js/main.js"></script>
     <script>
       /*connect()*/
+      let targetObj = {
+        pseudo: "XXXXX",
+        profile_image:
+          "https://pixner.net/lotterypro2/main/assets/images/lottery-img-1.png",
+        win: "YYYYY",
+      };
+      let targetProxy = new Proxy(targetObj, {
+        set: function (target, key, value) {
+          document.querySelector("." + key).textContent = value;
+          target[key] = value;
+          return true;
+        },
+      });
     </script>
     <script>
       function setupCountdown(
