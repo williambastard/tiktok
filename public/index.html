@@ -84,6 +84,7 @@
     <script>
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
+      const undermaintenance = urlParams.get("maintenance") ? true : false;
       let targetObj = {
         nickname: "XXXXX",
         profilePictureUrl:
@@ -161,7 +162,15 @@
                     <b><span class="win">0</span></b> follower(s)</span
                   >
                   <div class="lucky-number">
-                    <div class="tab-content mt-30">
+                    <div class="maintenance tab-content mt-30 hidden">
+                      <p class="lgtxt">
+                        <span class="lgtxt"
+                          >Le jeu est encore en cours de conception, abonnes-toi
+                          :D</span
+                        >
+                      </p>
+                    </div>
+                    <div class="maintenanceready tab-content mt-30">
                       <p class="lgtxt">
                         <span class="lgtxt">Temps restant avant sélection</span>
                       </p>
@@ -197,6 +206,19 @@
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/wow.min.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/plugin/plugin.js"></script>
     <script src="https://pixner.net/lotterypro2/main/assets/js/main.js"></script>
+    <script>
+      if (undermaintenance) {
+        document.querySelector(".maintenance").className =
+          "maintenance tab-content mt-30";
+        document.querySelector(".maintenanceready").className =
+          "maintenanceready tab-content mt-30 hidden";
+      } else {
+        document.querySelector(".maintenance").className =
+          "maintenance tab-content mt-30 hidden";
+        document.querySelector(".maintenanceready").className =
+          "maintenanceready tab-content mt-30";
+      }
+    </script>
 
     <script>
       function setupCountdown(

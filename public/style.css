@@ -2902,3 +2902,6 @@ label {
 .avatar .blur {
   filter: blur(100px);
 }
+.hidden {
+  display: none;
+}
