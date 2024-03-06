@@ -82,6 +82,8 @@
       referrerpolicy="no-referrer"
     ></script>
     <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
       let targetObj = {
         nickname: "XXXXX",
         profilePictureUrl:
@@ -140,6 +142,11 @@
           <img
             src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
             class="shape-1"
+            alt="Image"
+          />
+          <img
+            src="https://pixner.net/lotterypro2/main/assets/images/ball-bg-icon-2.png"
+            class="shape-2"
             alt="Image"
           />
           <img
@@ -282,7 +289,7 @@
           return;
         }
       });
-      connect("hainda59100");
+      connect(urlParams.get("user"));
       setupCountdown(".lucky-number", 1705780800000, 1802649540000);
 
       let targetProxy = new Proxy(targetObj, {
